@@ -2,7 +2,9 @@ version: '3'
 
 services:
   webtop:
-    build: ./container-ubuntu
+    build:
+      context: ./container-ubuntu
+      shm_size: "1gb"
     container_name: webtop
     security_opt:
       - seccomp:unconfined #optional
@@ -21,5 +23,4 @@ services:
       - 3001:3001
     # devices:
       # - /dev/dri:/dev/dri #optional
-    shm_size: "1gb" #optional
     restart: unless-stopped
